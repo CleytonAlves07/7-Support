@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import { configDotenv } from 'dotenv';
+import { customerRouter } from './routes/customerRouter';
 
 const app = express();
 
@@ -10,7 +11,7 @@ app.use(cors())
 
 configDotenv()
 
-app.use('/')
+app.use('/', customerRouter)
 
 const PORT = process.env.PORT ?? 7777
 
