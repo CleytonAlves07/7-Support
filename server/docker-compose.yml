@@ -1,0 +1,12 @@
+version: '16'
+services:
+  db:
+    image: postgres
+    container_name: 7-support
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=cleyton
+      - POSTGRES_PASSWORD=7support
