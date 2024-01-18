@@ -3,6 +3,7 @@ import { cpfValidate } from '../validations/cpf/cpfValidate';
 import { emailEmpty } from '../validations/email/emailEmpty';
 import { emailFormat } from '../validations/email/emailFormat';
 import { existingEmailCustomer } from '../validations/email/existingEmailCustomer';
+import { hashPassword } from './passwordService';
 
 
 
@@ -20,15 +21,14 @@ export const customerSignUpService = async ({ email, password, name, cpf }: Cust
     existingEmailCustomer(email),
     cpfValidate(cpf),
   ]);
+  const hashedPassword = await hashPassword(password);
   await prisma.customer.create({
     data: {
       name,
       email,
-      password,
+      password: hashedPassword,
       cpf
     }
   })
   return { success: true }
 }
-
-// CPF validation implemented 
