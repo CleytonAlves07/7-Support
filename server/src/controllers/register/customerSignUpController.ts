@@ -4,7 +4,7 @@ import { customerSignUpService } from '../../services/register/customerSignUpSer
 
 
 
-export const customerSignUpController = async (req: Request, res: Response, _next: NextFunction) {
+export const customerSignUpController = async (req: Request, res: Response, _next: NextFunction) => {
   const {email, password, name, cpf} = req.body;
 
   const { success } = await customerSignUpService({ email, password, name, cpf })
