@@ -1,4 +1,5 @@
 import { prisma } from '../../db/prismaClient';
+import { cpfValidate } from '../validations/cpf/cpfValidate';
 import { emailEmpty } from '../validations/email/emailEmpty';
 import { emailFormat } from '../validations/email/emailFormat';
 import { existingEmailCustomer } from '../validations/email/existingEmailCustomer';
@@ -17,6 +18,7 @@ export const customerSignUpService = async ({ email, password, name, cpf }: Cust
     emailEmpty(email),
     emailFormat(email),
     existingEmailCustomer(email),
+    cpfValidate(cpf),
   ]);
   await prisma.customer.create({
     data: {
@@ -28,3 +30,5 @@ export const customerSignUpService = async ({ email, password, name, cpf }: Cust
   })
   return { success: true }
 }
+
+// CPF validation implemented 
