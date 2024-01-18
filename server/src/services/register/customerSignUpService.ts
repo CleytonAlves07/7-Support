@@ -1,4 +1,7 @@
 import { prisma } from '../../db/prismaClient';
+import { emailEmpty } from '../validations/email/emailEmpty';
+import { emailFormat } from '../validations/email/emailFormat';
+import { existingEmailCustomer } from '../validations/email/existingEmailCustomer';
 
 
 
@@ -10,6 +13,11 @@ export interface CustomerSignUp {
 }
 
 export const customerSignUpService = async ({ email, password, name, cpf }: CustomerSignUp) => {
+  await Promise.all([
+    emailEmpty(email),
+    emailFormat(email),
+    existingEmailCustomer(email),
+  ]);
   await prisma.customer.create({
     data: {
       name,

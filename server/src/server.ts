@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import { configDotenv } from 'dotenv';
 import { customerRouter } from './routes/customerRouter';
+import { errorHandler } from './middleware/ErrorHandler';
 
 const app = express();
 
@@ -12,6 +13,9 @@ app.use(cors())
 configDotenv()
 
 app.use('/', customerRouter)
+
+
+app.use(errorHandler)
 
 const PORT = process.env.PORT ?? 7777
 
