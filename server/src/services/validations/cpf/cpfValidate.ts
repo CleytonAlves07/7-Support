@@ -35,6 +35,6 @@ export const cpfValidate = async (cpf: any): Promise<void> => {
 
   let isValid = finalDigit === comparisonDigit
 
-  if(!isValid) throw new HttpException(httpStatus.BAD_REQUEST, 'Esse CPF é inválido')
+  if(!isValid) throw new HttpException(httpStatus.BAD_REQUEST, 'CPF inválido')
   
 }
