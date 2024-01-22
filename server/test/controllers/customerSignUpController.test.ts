@@ -5,6 +5,9 @@ import httpStatus from 'http-status';
 
 
 describe('customerSignUpController', () => {
+
+  afterEach(() => jest.clearAllMocks());
+
   it('should return when the customer is successful in signing up!', async () => {
     const req = {
       body: {
