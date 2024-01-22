@@ -5,7 +5,7 @@ import HttpException from '../../../middleware/errors/HttpException';
 
 
 
-export const emailNotFound = async (email: string) => {
+export const emailNotFound = async (email: string): Promise<void> => {
     const existUser = await prisma.customer.findUnique({
     where: {
         email,
