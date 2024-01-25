@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from 'express';
 import httpStatus from 'http-status';
 import { findByIdCustomerController } from '../../../src/controllers/find/findByIdCustomerController';
 import * as findByIdCustomerServiceModule from '../../../src/services/find/findByIdCustomerService';
-import HttpException from '../../../src/middleware/errors/HttpException';
 
 jest.mock('../../../src/services/find/findByIdCustomerService')
 
