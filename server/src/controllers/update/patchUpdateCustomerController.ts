@@ -10,5 +10,4 @@ export const patchUpdateCustomerController = async (req: Request, res: Response,
 
   res.status(httpStatus.OK).json({ message: "Cliente atualizado com sucesso!", updateCustomer, success})
   
-
 }
