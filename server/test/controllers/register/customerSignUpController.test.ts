@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import * as customerSignUpServiceModule from '../../src/services/register/customerSignUpService';
-import { customerSignUpController } from '../../src/controllers/register/customerSignUpController';
+import * as customerSignUpServiceModule from '../../../src/services/register/customerSignUpService';
+import { customerSignUpController } from '../../../src/controllers/register/customerSignUpController';
 import httpStatus from 'http-status';
 
 
