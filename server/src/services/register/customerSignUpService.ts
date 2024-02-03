@@ -4,6 +4,7 @@ import { existingCPFCustomer } from '../validations/cpf/existingCPFCustomer';
 import { emailEmpty } from '../validations/email/emailEmpty';
 import { emailFormat } from '../validations/email/emailFormat';
 import { existingEmailCustomer } from '../validations/email/existingEmailCustomer';
+import { nameEmpty } from '../validations/name/nameEmpty';
 import { passwordFormat } from '../validations/password/passwordFormat';
 import { hashPassword } from './passwordService';
 
@@ -18,6 +19,7 @@ export interface CustomerSignUp {
 
 export const customerSignUpService = async ({ email, password, name, cpf }: CustomerSignUp) => {
   await Promise.all([
+    nameEmpty(name),
     emailEmpty(email),
     emailFormat(email),
     existingEmailCustomer(email),
