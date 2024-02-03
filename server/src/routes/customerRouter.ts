@@ -5,12 +5,15 @@ import { findByIdCustomerController } from '../controllers/find/findByIdCustomer
 import { findAllCustomerController } from '../controllers/find/findAllCustomerController';
 import { patchUpdateCustomerController } from '../controllers/update/patchUpdateCustomerController';
 import { putUpdateCustomerController } from '../controllers/update/putUpdateCustomerController';
+import { loginCustomerController } from '../controllers/login/loginCustomerController';
 
 
 
 const customerRouter = Router()
 
 customerRouter.post('/register/customer', expressAsyncWrap(customerSignUpController));
+
+customerRouter.post('/login/customer', expressAsyncWrap(loginCustomerController));
 
 customerRouter.get('/customer/:id', expressAsyncWrap(findByIdCustomerController));
 
