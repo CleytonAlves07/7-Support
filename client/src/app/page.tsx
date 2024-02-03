@@ -1,6 +1,11 @@
+import Header from './components/header';
 
 export default function Home() {
   return (
-    <div>Welcome to the your Home!</div>
+    <div>
+      <div>
+      Home Page
+    </div>
+    </div>
   );
 }
