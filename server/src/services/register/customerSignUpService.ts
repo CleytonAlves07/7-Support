@@ -26,13 +26,20 @@ export const customerSignUpService = async ({ email, password, name, cpf }: Cust
     passwordFormat(password),
   ]);
   const hashedPassword = await hashPassword(password);
-  await prisma.customer.create({
+  try {
+    console.log("name:  ", name);
+    
+    await prisma.customer.create({
     data: {
-      name,
+      name, 
       email,
       password: hashedPassword,
       cpf
     }
   })
   return { success: true }
+  } catch (error) {
+    console.error('Erro ao criar o cliente:', error)
+    throw error;
+  }
 }

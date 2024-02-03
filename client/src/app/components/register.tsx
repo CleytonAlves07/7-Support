@@ -1,18 +1,66 @@
+"use client"
 import Link from 'next/link'
-import React from 'react'
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react'
 
 export default function Register() {
+  const [formData, setFormData] = useState({});
+  const [message, setMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const router = useRouter();
+
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({
+      ...formData, [e.target.id]: e.target.value
+    })
+  
+  }
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+  async function handleSubmit(e: React.SyntheticEvent) {
+    try {
+      e.preventDefault();
+      setLoading(true);
+      const res = await fetch(`${BACKEND_URL}/register/customer`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+        body: JSON.stringify(formData)
+      });
+      const data = await res.json();
+      setSuccess(data.success)
+      setMessage(data.message);
+      setLoading(false);
+      if (data.success) {
+        router.push('/about')
+      }
+      
+    } catch (error) {
+      setLoading(false);
+    }
+  }
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setMessage(null);
+    }, 5000);
+
+    return () => clearTimeout(timeoutId);
+  }, [message]);
+
   return (
     <div>
       <h1 className="flex text-2xl font-semibold mb-4 text-center justify-center">Cadastro</h1>
-      <form action="#" method="POST">
+      <form onSubmit={handleSubmit}>
       <div className="mb-4">
-        <label htmlFor="username" className="block text-gray-600">Nome</label>
+        <label htmlFor="name" className="block text-gray-600">Nome</label>
         <input 
             type="text" 
-            id="username" 
-            name="username"
-            placeholder="João dos Santos"    
+            id="name" 
+            name="name"
+            placeholder="João dos Santos"
+            onChange={handleChange}
             className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"           
           />
         </div>
@@ -22,7 +70,8 @@ export default function Register() {
             type="email" 
             id="email" 
             name="email"
-            placeholder="joao_dos_santos@exemplo.com"    
+            placeholder="joao_dos_santos@exemplo.com"
+            onChange={handleChange}
             className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"           
           />
         </div>
@@ -33,6 +82,7 @@ export default function Register() {
             id="password" 
             name="password"
             placeholder="SenhaComLetra$eNumeros"
+            onChange={handleChange}
             className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"/>
       </div>
    
@@ -43,10 +93,12 @@ export default function Register() {
             id="cpf" 
             name="cpf"
             placeholder="192.173.164-58"
+            onChange={handleChange}
             className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"/>
       </div>
-    
-      <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full">Salvar</button>
+        <button disabled={loading} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full">
+          {loading ? 'Loading...' : 'Salvar'}
+        </button>
       </form>
   
     <div className='flex space-x-2 mt-2 justify-start'>
@@ -54,6 +106,9 @@ export default function Register() {
         <Link href="/login/customer" className=' hover:text-blue-500 text-gray-700'>
         <span className=' text-blue-500'>Entrar</span>
         </Link>
+      </div>
+      <div>{!success ? <p className='flex justify-center mt-4 text-red-600'>{message}</p> :
+          <p className='flex justify-center mt-4 text-teal-600'>{message}</p>}
         </div>
     </div>
   )
