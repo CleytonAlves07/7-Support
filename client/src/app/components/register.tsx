@@ -50,7 +50,7 @@ export default function Register() {
   }, [message]);
 
   return (
-    <div>
+    <div className=' w-1/2 min-w-80'>
       <h1 className="flex text-2xl font-semibold mb-4 text-center justify-center">Cadastro</h1>
       <form onSubmit={handleSubmit}>
       <div className="mb-4">
@@ -107,9 +107,10 @@ export default function Register() {
         <span className=' text-blue-500'>Entrar</span>
         </Link>
       </div>
-      <div>{!success ? <p className='flex justify-center mt-4 text-red-600'>{message}</p> :
+      <div className='mb-8 h-12'>
+        {!success ? <p className='flex justify-center mt-4 text-red-600'>{message}</p> :
           <p className='flex justify-center mt-4 text-teal-600'>{message}</p>}
-        </div>
+      </div>
     </div>
   )
 }

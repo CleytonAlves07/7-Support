@@ -1,11 +1,55 @@
+"use client"
 import Link from 'next/link'
-import React from 'react'
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react'
 
 export default function Login() {
+  const [formData, setFormData] = useState({});
+  const [message, setMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const router = useRouter();
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({
+      ...formData, [e.target.id]: e.target.value
+    })
+    
+  }
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+  async function handleSubmit(e: React.SyntheticEvent) {
+    try {
+      e.preventDefault();
+      setLoading(true);
+      const res = await fetch(`${BACKEND_URL}/api/auth/sign-in`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    });
+      const data = await res.json();
+      setSuccess(data.success)
+      setMessage(data.message);
+      setLoading(false);
+      if (data.success) {
+        router.push('/')
+      }
+    } catch (error) {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setMessage(null);
+    }, 5000);
+
+    return () => clearTimeout(timeoutId);
+  }, [message]);
   return (
     <div>
       <h1 className="flex text-2xl font-semibold mb-4 text-center justify-center">Login</h1>
-      <form action="#" method="POST">
+      <form onSubmit={handleSubmit}>
       <div className="mb-4">
         <label htmlFor="username" className="block text-gray-600">Username</label>
         <input type="text" id="username" name="username" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"/>
@@ -28,9 +72,6 @@ export default function Login() {
         <span className=' text-blue-500'>Cadastrar</span>
         </Link>
     </div>
-    
-      
-
     </div>
   )
 }
