@@ -34,7 +34,7 @@ export default function Register() {
       setMessage(data.message);
       setLoading(false);
       if (data.success) {
-        router.push('/about')
+        router.push('/login/customer')
       }
       
     } catch (error) {
@@ -50,7 +50,7 @@ export default function Register() {
   }, [message]);
 
   return (
-    <div className=' w-1/2 min-w-80'>
+    <div className=' w-1/2 min-w-80 mt-8'>
       <h1 className="flex text-2xl font-semibold mb-4 text-center justify-center">Cadastro</h1>
       <form onSubmit={handleSubmit}>
       <div className="mb-4">
