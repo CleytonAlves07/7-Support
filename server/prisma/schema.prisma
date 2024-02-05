@@ -39,3 +39,17 @@ model Mechanic {
 
 }
 
+model Manager {
+  id        String @id @default(cuid())
+  email     String @unique
+  password  String
+  name      String 
+  cpf       String @unique
+  role      String? @default("Cliente") 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("managers")
+
+}
+
