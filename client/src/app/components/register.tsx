@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
 export default function Register() {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({ role: "Cliente"});
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -95,7 +95,8 @@ export default function Register() {
             placeholder="192.173.164-58"
             onChange={handleChange}
             className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"/>
-      </div>
+        </div>
+        
         <button disabled={loading} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full">
           {loading ? 'Loading...' : 'Salvar'}
         </button>
