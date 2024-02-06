@@ -1,12 +1,17 @@
 import React from 'react'
 import Link from 'next/link';
+import { Black_Ops_One } from "next/font/google";
+
+const black = Black_Ops_One( { weight: "400", subsets: ['latin'] });
 
 export default function Header() {
   return (
-    <header className='bg-blue-500'>
+    <header className=' bg-light-blue'>
       <div className=' flex justify-between mx-auto max-w-6xl p-4'>
-        <Link href="/" className=' hover:text-gray-700 text-white'  > 7- logo</Link>
-        <ul className='flex space-x-6'>
+        <Link href="/" className=' text-white text-2xl hover:text-gray-200'>
+          <h1 className={black.className} >7 Support</h1>
+        </Link>
+        <ul className='flex space-x-6 justify-center text-center'>
           <li>
             <Link href='/' className=' hover:text-gray-700 text-white'>Home</Link>
           </li>
