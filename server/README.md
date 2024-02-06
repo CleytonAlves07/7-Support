@@ -1,16 +1,4 @@
-<<<<<<< HEAD
-Getting Started
-First, run the development server:
 
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-
-Open http://localhost:7779.
 =======
 ## Getting Started
 First, run the development server:
@@ -22,4 +10,7 @@ yarn dev
 pnpm dev
  or
 bun dev
->>>>>>> 3f3c8431cd109cc5d6f476d940f3a35d56fb9c08
+
+Open http://localhost:7779.
+
+![Diagram_7-Support](https://github.com/CleytonAlves07/7-Support/assets/89083420/cdf07d45-adfe-4a93-aea0-5c1dbf7e0162)
