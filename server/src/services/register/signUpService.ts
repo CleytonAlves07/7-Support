@@ -1,4 +1,3 @@
-import { prisma } from '../../db/prismaClient';
 import { cpfValidate } from '../validations/cpf/cpfValidate';
 import { existingCPFCustomer } from '../validations/cpf/existingCPFCustomer';
 import { emailEmpty } from '../validations/email/emailEmpty';
@@ -6,18 +5,21 @@ import { emailFormat } from '../validations/email/emailFormat';
 import { existingEmailCustomer } from '../validations/email/existingEmailCustomer';
 import { nameEmpty } from '../validations/name/nameEmpty';
 import { passwordFormat } from '../validations/password/passwordFormat';
-import { hashPassword } from './passwordService';
+import { determineUserRole } from './determineUserRole';
+import { customerSignUp } from './customerSignUp';
+import { managerSignUp } from './managerSignUp';
+import { mechanicSignUp } from './mechanicSignUp';
 
 
 
-export interface CustomerSignUp {
+export interface UserSignUp {
   name: string;
   email: string;     
   password: string;
   cpf: string;
 }
 
-export const customerSignUpService = async ({ email, password, name, cpf }: CustomerSignUp) => {
+export const signUpService = async ({ email, password, name, cpf }: UserSignUp) => {
   await Promise.all([
     nameEmpty(name),
     emailEmpty(email),
@@ -27,21 +29,15 @@ export const customerSignUpService = async ({ email, password, name, cpf }: Cust
     existingCPFCustomer(cpf),
     passwordFormat(password),
   ]);
-  const hashedPassword = await hashPassword(password);
   try {
-    console.log("name:  ", name);
+    const role = determineUserRole(email);
+    if (role === 'customer') { await customerSignUp( email, password, name, cpf, role )}
+    if (role === 'manager') { await managerSignUp(email, password, name, cpf, role)}
+    if (role === 'mechanic') { await mechanicSignUp(email, password, name, cpf, role)}
     
-    await prisma.customer.create({
-    data: {
-      name, 
-      email,
-      password: hashedPassword,
-      cpf
-    }
-  })
   return { success: true }
   } catch (error) {
-    console.error('Erro ao criar o cliente:', error)
+    console.error('Erro ao criar o usuário:', error)
     throw error;
   }
 }

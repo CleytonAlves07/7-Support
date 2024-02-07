@@ -1,5 +1,5 @@
 import { prisma } from '../../../src/db/prismaClient';
-import * as customerSignUpServiceModule from '../../../src/services/register/customerSignUpService';
+import * as customerSignUpServiceModule from '../../../src/services/register/signUpService';
 import { hashPassword } from '../../../src/services/register/passwordService';
 
 jest.mock('../../../src/db/prismaClient', () => ({

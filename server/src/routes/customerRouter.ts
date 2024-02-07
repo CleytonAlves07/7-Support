@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { customerSignUpController } from '../controllers/register/customerSignUpController';
 import expressAsyncWrap from 'express-async-wrap'
 import { findByIdCustomerController } from '../controllers/find/findByIdCustomerController';
 import { findAllCustomerController } from '../controllers/find/findAllCustomerController';
@@ -10,8 +9,6 @@ import { loginCustomerController } from '../controllers/login/loginCustomerContr
 
 
 const customerRouter = Router()
-
-customerRouter.post('/register/customer', expressAsyncWrap(customerSignUpController));
 
 customerRouter.post('/login/customer', expressAsyncWrap(loginCustomerController));
 
