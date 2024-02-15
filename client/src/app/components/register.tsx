@@ -22,7 +22,7 @@ export default function Register() {
     try {
       e.preventDefault();
       setLoading(true);
-      const res = await fetch(`${BACKEND_URL}/register/customer`, {
+      const res = await fetch(`${BACKEND_URL}/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ export default function Register() {
       setMessage(data.message);
       setLoading(false);
       if (data.success) {
-        router.push('/login/customer')
+        router.push('/login')
       }
       
     } catch (error) {

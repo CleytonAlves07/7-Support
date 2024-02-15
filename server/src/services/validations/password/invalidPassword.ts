@@ -1,7 +1,7 @@
 import bcryptjs from 'bcryptjs';
 import httpStatus from 'http-status';
 import HttpException from '../../../middleware/errors/HttpException';
-import { existUser } from '../existCustomer';
+import { existUser } from '../existUser';
 
 
 export const invalidPassword = async (email: string, passWord: string) => {

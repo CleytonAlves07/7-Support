@@ -3,7 +3,7 @@ import cors from 'cors'
 import { configDotenv } from 'dotenv';
 import { customerRouter } from './routes/customerRouter';
 import { errorHandler } from './middleware/ErrorHandler';
-import { registerRouter } from './routes/registerRouter';
+import { authenticationRouter } from './routes/authenticationRouter';
 
 const app = express();
 
@@ -19,7 +19,7 @@ app.use(cors(corsOptions))
 
 configDotenv()
 
-app.use('/', registerRouter)
+app.use('/', authenticationRouter)
 app.use('/', customerRouter)
 
 
