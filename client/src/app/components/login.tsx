@@ -1,14 +1,13 @@
 "use client"
 import Link from 'next/link'
-import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
+import RedirectByRole from '../utils/redirects';
 
 export default function Login() {
   const [formData, setFormData] = useState({});
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const router = useRouter();
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setFormData({
       ...formData, [e.target.id]: e.target.value
@@ -32,7 +31,7 @@ export default function Login() {
       setMessage(data.message);
       setLoading(false);
       if (data.success) {
-        router.push('/')
+        RedirectByRole(data.user.role);
       }
     } catch (error) {
       setLoading(false);
