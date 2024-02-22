@@ -53,3 +53,16 @@ model Manager {
 
 }
 
+model Product {
+  id            String @id @default(cuid())
+  description   String
+  value         Decimal
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("products")
+
+}
+
+
+
