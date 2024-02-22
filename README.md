@@ -42,8 +42,8 @@ O projeto está aberto a contribuições. Sinta-se à vontade para abrir issues,
 2. Instale as dependências do back-end: `cd server && npm install`
 3. Instale as dependências do front-end: `cd client && npm install`
 4. Configure o banco de dados PostgreSQL e atualize as variáveis de ambiente necessárias.
-5. Inicie o back-end: `cd server && npm start`
-6. Inicie o front-end: `cd client && npm start`
+5. Inicie o back-end: `cd server && npm run dev`
+6. Inicie o front-end: `cd client && npm run dev`
 
 ## Agradecimento:
 
