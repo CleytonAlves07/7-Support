@@ -4,6 +4,7 @@ import { findByIdCustomerController } from '../controllers/find/findByIdCustomer
 import { findAllCustomerController } from '../controllers/find/findAllCustomerController';
 import { patchUpdateCustomerController } from '../controllers/update/patchUpdateCustomerController';
 import { putUpdateCustomerController } from '../controllers/update/putUpdateCustomerController';
+import { deleteCustomerController } from '../controllers/delete/deleteCustomerController';
 
 
 const customerRouter = Router()
@@ -16,5 +17,6 @@ customerRouter.patch('/customer/:id', expressAsyncWrap(patchUpdateCustomerContro
 
 customerRouter.get('/customers', expressAsyncWrap(findAllCustomerController));
 
+customerRouter.delete('/customer/:id', expressAsyncWrap(deleteCustomerController));
 
 export { customerRouter }
