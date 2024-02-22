@@ -4,7 +4,13 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
 export default function Register() {
-  const [formData, setFormData] = useState({ role: "Cliente"});
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    cpf: '',
+    role: "Cliente"
+  });
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -39,6 +45,8 @@ export default function Register() {
       
     } catch (error) {
       setLoading(false);
+      console.error('Error: ', error);
+
     }
   }
   useEffect(() => {
@@ -60,6 +68,7 @@ export default function Register() {
             id="name" 
             name="name"
             placeholder="João dos Santos"
+            autoComplete='name'
             onChange={handleChange}
             className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"           
           />
@@ -71,6 +80,7 @@ export default function Register() {
             id="email" 
             name="email"
             placeholder="joao_dos_santos@exemplo.com"
+            autoComplete='email'
             onChange={handleChange}
             className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"           
           />
@@ -82,6 +92,7 @@ export default function Register() {
             id="password" 
             name="password"
             placeholder="SenhaComLetra$eNumeros"
+            autoComplete='off'
             onChange={handleChange}
             className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"/>
       </div>
@@ -93,6 +104,7 @@ export default function Register() {
             id="cpf" 
             name="cpf"
             placeholder="192.173.164-58"
+            autoComplete='cpf'
             onChange={handleChange}
             className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"/>
         </div>
