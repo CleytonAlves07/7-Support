@@ -72,9 +72,9 @@ export default function Login() {
         <input type="password" id="password" name="password" onChange={handleChange} placeholder="SenhaComLetra$eNumeros" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"/>
       </div>
     
-      <div className="mb-6 text-blue-500">
+      {/* <div className="mb-6 text-blue-500">
         <a href="#" className="hover:underline">Forgot Password?</a>
-      </div>
+      </div> */}
     
       <button disabled={loading} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full">
           {loading ? 'Loading...' : 'Entrar'}
