@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import httpStatus from 'http-status';
 import { registerProductService } from '../../services/register/registerProductService';
-import { createProduct } from '../../services/find/IProduct';
+import { createProduct } from '../../services/interface/IProduct';
 
 
 

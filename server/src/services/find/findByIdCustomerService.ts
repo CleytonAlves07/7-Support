@@ -1,7 +1,7 @@
 import httpStatus from 'http-status';
 import { prisma } from '../../db/prismaClient';
 import HttpException from '../../middleware/errors/HttpException';
-import { findCustomer } from './IfindCustomer';
+import { findCustomer } from '../interface/ICustomer';
 
 
 export const findByIdCustomerService = async (id: string): Promise<findCustomer | null> => {

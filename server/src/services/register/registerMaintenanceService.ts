@@ -1,25 +1,24 @@
 import httpStatus from 'http-status';
 import { prisma } from '../../db/prismaClient';
 import HttpException from '../../middleware/errors/HttpException';
-import { createProduct } from '../interface/IProduct';
+import { createMaintenance } from '../interface/IMaintenance';
 
 
-export const registerProductService = async ({ product, description, value }: createProduct ) => {
+export const registerMaintenanceService = async ({ repair, value }: createMaintenance ) => {
   // await Promise.all([
      
   // ]);
 
   try {
-    await prisma.product.create({
+    await prisma.maintenance.create({
       data: {
-        product,
+        repair,
         value,
-        description,
       }
     })
   } catch (error) {    
     console.log(error);
-    throw new HttpException(httpStatus.BAD_REQUEST, 'Produto não cadastrado')
+    throw new HttpException(httpStatus.BAD_REQUEST, 'Serviço não cadastrado')
   }
 
   return { success: true }

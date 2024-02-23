@@ -5,6 +5,7 @@ import { customerRouter } from './routes/customerRouter';
 import { errorHandler } from './middleware/ErrorHandler';
 import { authenticationRouter } from './routes/authenticationRouter';
 import { productRouter } from './routes/productRouter';
+import { maintenanceRouter } from './routes/maintenanceRouter';
 
 const app = express();
 
@@ -23,6 +24,7 @@ configDotenv()
 app.use('/', authenticationRouter)
 app.use('/', customerRouter)
 app.use('/', productRouter)
+app.use('/', maintenanceRouter)
 
 app.use(errorHandler)
 

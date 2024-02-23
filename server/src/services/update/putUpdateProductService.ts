@@ -1,7 +1,7 @@
 import httpStatus from 'http-status';
 import { prisma } from '../../db/prismaClient'
 import HttpException from '../../middleware/errors/HttpException';
-import { findProduct } from '../find/IProduct';
+import { findProduct } from '../interface/IProduct';
 
 
 export const putUpdateProductService = async (id: string, data: findProduct) => {
