@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { SocialIcons } from './components/socialIcons';
 
 export default function Home() {
   return (
@@ -11,10 +12,13 @@ export default function Home() {
               Bem-vindo ao 7-Support: Sua Solução Exclusiva para Cuidar do Seu Veículo!
             </h1>
           </div>
-          <div className='flex xl:w-2/3 w-full'>
+          <div className='flex flex-col xl:w-2/3 w-full'>
             <p className="text-lg text-gray-500 text-justify">
               No 7-Support, estamos dedicados a proporcionar uma experiência excepcional no cuidado automotivo, tanto para clientes quanto para administradores. Nossa plataforma foi meticulosamente desenvolvida para aprimorar o processo de manutenção automotiva, oferecendo recursos robustos e intuitivos que garantem o melhor para o seu veículo.
             </p>
+            <span className='flex justify-center items-center'>
+              <SocialIcons />
+            </span> 
           </div>
         </div>
       </div>
