@@ -79,7 +79,26 @@ export default function Home() {
         </p>
         </Link>    
       </div>
-    </div>
+      </div>
+      <div className='container mx-auto p-8 text-center mt-10 mb-48 xl:mt-20 flex flex-col bg-slate-100 xl:w-2/3 w-full rounded-lg justify-center items-center'>
+        <div className='flex flex-col w-full justify-center items-center'>
+          <h1 className='text-3xl font-bold mb-4'>
+            Solicite um orçamento agora
+          </h1>
+        </div>
+        <div className='flex flex-col xl:w-2/3 w-full'>
+          <p className="flex text-lg text-gray-500 text-justify ">
+            Descubra a excelência no cuidado automotivo que você merece! Na 7-Support, oferecemos serviços personalizados para o seu veículo, proporcionando a máxima qualidade e atenção que ele merece. Não deixe a manutenção do seu carro para depois. Estamos aqui para oferecer um orçamento feito sob medida, garantindo que seu veículo receba a atenção especializada que ele precisa. Solicite seu orçamento agora e dê ao seu automóvel o tratamento que ele merece, com serviços que vão além das suas expectativas.
+          </p>
+        </div>
+        <div>
+          <Link href='/login'>
+            <button className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-6'>
+            Solicite seu orçamento
+          </button>
+          </Link>
+        </div>
+      </div>
   </div>
 );
 }
