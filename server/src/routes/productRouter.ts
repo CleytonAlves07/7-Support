@@ -10,7 +10,7 @@ import { deleteProductController } from '../controllers/delete/deleteProductCont
 
 const productRouter = Router()
 
-productRouter.post('/product', expressAsyncWrap(registerProductController))
+productRouter.post('/admin/product', expressAsyncWrap(registerProductController))
 
 productRouter.get('/products', expressAsyncWrap(findAllProductsController));
 

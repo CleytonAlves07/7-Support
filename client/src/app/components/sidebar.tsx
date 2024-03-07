@@ -47,13 +47,13 @@ export default function Sidebar() {
         {isProdutoServicoOpen && (
           <div>
             <div className="flex items-center justify-between w-full px-6 py-2 text-gray-200 hover:text-gray-400 focus:outline-none transition-bg duration-500 hover:bg-white">
-              <Link href="/product" className='flex items-center gap-2 ml-8 hover:ml-6'>
+              <Link href="/admin/product" className='flex items-center gap-2 ml-8 hover:ml-6'>
                 <Barcode className="w-6 h-6" />
                 <span>Produto</span>
               </Link>
             </div>
             <div className="flex items-center justify-between w-full px-6 py-2 text-gray-200 hover:text-gray-400 focus:outline-none transition-bg duration-500 hover:bg-white">
-              <Link href="/maintenance" className='flex items-center gap-2 ml-8 hover:ml-6'>
+              <Link href="/admin/maintenance" className='flex items-center gap-2 ml-8 hover:ml-6'>
                 <Settings className="w-6 h-6" />
                 <span>Serviço</span>
               </Link>
