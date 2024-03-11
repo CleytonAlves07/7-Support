@@ -1,10 +1,13 @@
 
 "use client"
 import React, { useEffect, useState } from 'react'
-import { AlertOctagon } from 'lucide-react';
 
 export default function ProductForm() {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    product: '',
+    description: '',
+    value: '',
+  });
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -14,7 +17,13 @@ export default function ProductForm() {
       ...formData, [e.target.id]: e.target.value
     })
   }
-
+  function resetForm() {
+    setFormData({
+    product: '',
+    description: '',
+    value: '',
+  });
+  }
   const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   async function handleSubmit(e: React.SyntheticEvent) {
@@ -30,12 +39,13 @@ export default function ProductForm() {
       });
 
       const data = await res.json();
-      console.log(data);
       
       setSuccess(data.success);
       setMessage(data.message);
       setLoading(false);
-
+      if (data.success) {         
+        resetForm();
+      }
     } catch (error) {
       setLoading(false);
     }
@@ -56,15 +66,21 @@ export default function ProductForm() {
             type="text" 
             name="product" 
             id="product"
+            value={formData.product || ''}
             onChange={handleChange}
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" required />
-          <label htmlFor="product" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nome do Produto</label>
+        <label
+          htmlFor="product"
+          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >Nome do Produto
+        </label>
       </div>
       <div className="relative z-0 w-full mb-5 group">
           <input 
             type="text" 
             name="description" 
-            id="description" 
+            id="description"
+            value={formData.description || ''}
             onChange={handleChange}
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
           <label htmlFor="description" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Descrição</label>
@@ -73,7 +89,8 @@ export default function ProductForm() {
           <input 
             type="text" 
             name="value" 
-            id="value" 
+            id="value"
+            value={formData.value || ''}
             onChange={handleChange}
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
           <label htmlFor="value" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Valor unitário R$</label>
