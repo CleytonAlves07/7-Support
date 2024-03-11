@@ -10,7 +10,7 @@ import { deleteMaintenanceController } from '../controllers/delete/deleteMainten
 
 const maintenanceRouter = Router()
 
-maintenanceRouter.post('/maintenance', expressAsyncWrap(registerMaintenanceController))
+maintenanceRouter.post('/admin/maintenance', expressAsyncWrap(registerMaintenanceController))
 
 maintenanceRouter.get('/maintenances', expressAsyncWrap(findAllMaintenanceController));
 
