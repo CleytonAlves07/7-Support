@@ -3,7 +3,7 @@ export interface findProduct {
   id:           string,
   product:      string,
   value:        string,
-  description:  string,
+  description: string,
 }
 
 export interface createProduct {

@@ -28,7 +28,7 @@ export default function MaintenanceForm() {
     try {
       e.preventDefault();
       setLoading(true);
-      const res = await fetch(`${BACKEND_URL}/admin/maintenance`, {
+      const res = await fetch(`${BACKEND_URL}/admin/register/maintenance`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

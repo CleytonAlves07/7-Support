@@ -6,13 +6,16 @@ import { findByIdProductController } from '../controllers/find/findByIdProductCo
 import { putUpdateProductController } from '../controllers/update/putUpdateProductController';
 import { patchUpdateProductController } from '../controllers/update/patchUpdateProductController';
 import { deleteProductController } from '../controllers/delete/deleteProductController';
+import { findProductsByNameController } from '../controllers/find/findProductsByNameController';
 
 
 const productRouter = Router()
 
-productRouter.post('/admin/product', expressAsyncWrap(registerProductController))
+productRouter.post('/admin/register/product', expressAsyncWrap(registerProductController))
 
-productRouter.get('/products', expressAsyncWrap(findAllProductsController));
+productRouter.get('products', expressAsyncWrap(findAllProductsController));
+
+productRouter.get('/admin/search/product', expressAsyncWrap(findProductsByNameController));
 
 productRouter.get('/product/:id', expressAsyncWrap(findByIdProductController));
 
