@@ -64,7 +64,7 @@ export default function SearchProduct() {
             {loading ? 'Procurando...' : 'Procurar Produto'}
           </button>
           {searchedProduct && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1  gap-4">
               {searchedProduct.map((product: any) => (
                 <div key={product.product} className="p-4 bg-gray-100 rounded-md">
                   <p>Nome: {product.product}</p>
@@ -74,7 +74,7 @@ export default function SearchProduct() {
               ))}
             </div>
           )}
-          <div className='mb-8 h-12'>
+        <div className='mb-8 h-12'>
         {!message ? (
           <p className='flex justify-center mt-4 text-red-600'>{ message }</p>
         ) : (
