@@ -1,3 +1,4 @@
+import { Search } from 'lucide-react';
 import React, { useState } from 'react';
 
 export default function SearchProduct() {
@@ -46,23 +47,26 @@ export default function SearchProduct() {
         <h1 className='flex justify-center items-center font-bold text-gray-400 text-2xl mt-6 mb-8'>
           Pesquisar Produto
         </h1>
-        <div className="max-w-md mx-auto mt-4">
-          <input
-            type="text"
-            name="search"
-            id="search"
-            onChange={handleChange}
-            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder="Digite o nome do produto"
-            required
-          />
-          <button
-            disabled={loading}
-            type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-8"
-          >
-            {loading ? 'Procurando...' : 'Procurar Produto'}
-          </button>
+        <div className="max-w-md mx-auto mt-4 relative ">
+          <div className='relative'>
+            <input 
+              type="text" 
+              name="search" 
+              id="search"
+              onChange={handleChange}
+              className="bg-gray-50 border border-gray-500 
+              text-gray-900 text-sm rounded-lg focus:ring-1 focus:outline-none 
+              focus:ring-blue-500 block w-full p-2.5 pr-10 "
+              required
+              placeholder="Digite o nome do produto" />
+            <button
+              type="submit"
+              className="absolute right-0 top-0 bottom-0 px-3 py-2 text-white bg-blue-500 rounded-r-md focus:outline-none"
+            >
+              <Search />
+            </button>
+          </div>
+          
           {searchedProduct && (
             <div className="grid grid-cols-1  gap-4">
               {searchedProduct.map((product: any) => (
@@ -74,7 +78,7 @@ export default function SearchProduct() {
               ))}
             </div>
           )}
-        <div className='mb-8 h-12'>
+        <div className='mb-8 h-12 text-xl'>
         {!message ? (
           <p className='flex justify-center mt-4 text-red-600'>{ message }</p>
         ) : (

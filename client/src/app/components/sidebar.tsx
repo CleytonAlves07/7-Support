@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ChevronsDown, PencilLine, Barcode, Settings, Package, SlidersHorizontal, Menu } from 'lucide-react';
+import { ChevronsDown, PencilLine, Barcode, Settings, Package, SlidersHorizontal, Menu, Search } from 'lucide-react';
 
 export default function Sidebar() {
   const [isCadastrarOpen, setIsCadastrarOpen] = useState(false);
@@ -54,6 +54,39 @@ export default function Sidebar() {
             </div>
             <div className="flex items-center justify-between w-full px-6 py-2 text-gray-200 hover:text-gray-400 focus:outline-none transition-bg duration-500 hover:bg-white">
               <Link href="/admin/register/maintenance" className='flex items-center gap-2 ml-8 hover:ml-6'>
+                <Settings className="w-6 h-6" />
+                <span>Serviço</span>
+              </Link>
+            </div>
+          </div>
+        )}
+      </div>
+      <div className={`transition-opacity mb-2 w-full ${isCadastrarOpen ? 'opacity-100 transition-bg duration-500' : 'opacity-0 transition-bg duration-500'}`}>
+        <button
+          className="flex items-center justify-between w-full px-6 py-2 text-gray-200 hover:text-gray-400 focus:outline-none hover:bg-white transition-bg duration-500"
+          onClick={toggleProdutoServico}
+        >
+          <div className="flex items-center">
+            <Search className="w-6 h-6"/>
+            <span className='ml-4'>Pesquisar</span>
+          </div>
+          <p
+            className={`h-5 w-5 ml-4 ${isProdutoServicoOpen ? 'transform rotate-90 transition-bg duration-500' : 'transition-bg duration-500'}`}
+          >
+            <ChevronsDown />
+          </p>
+        </button>
+
+        {isProdutoServicoOpen && (
+          <div>
+            <div className="flex items-center justify-between w-full px-6 py-2 text-gray-200 hover:text-gray-400 focus:outline-none transition-bg duration-500 hover:bg-white">
+              <Link href="/admin/search/product" className='flex items-center gap-2 ml-8 hover:ml-6'>
+                <Barcode className="w-6 h-6" />
+                <span>Produto</span>
+              </Link>
+            </div>
+            <div className="flex items-center justify-between w-full px-6 py-2 text-gray-200 hover:text-gray-400 focus:outline-none transition-bg duration-500 hover:bg-white">
+              <Link href="/admin/search/maintenance" className='flex items-center gap-2 ml-8 hover:ml-6'>
                 <Settings className="w-6 h-6" />
                 <span>Serviço</span>
               </Link>
