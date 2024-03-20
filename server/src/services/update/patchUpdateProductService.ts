@@ -14,7 +14,7 @@ export const patchUpdateProductService = async (id: string, data: findProduct) =
     select: {
       product: true,
       description: true,
-      value: true,
+      amount: true,
     }
   });
 

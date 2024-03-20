@@ -6,9 +6,9 @@ import { registerMaintenanceService } from '../../services/register/registerMain
 
 
 export const registerMaintenanceController = async (req: Request, res: Response, _next: NextFunction) => {
-  const { repair, value }: createMaintenance = req.body;
+  const { repair, amount }: createMaintenance = req.body;
   
-  const { success } = await registerMaintenanceService({ repair, value })
+  const { success } = await registerMaintenanceService({ repair, amount })
 
   res.status(httpStatus.CREATED).json({ message: "Serviço cadastrado com sucesso!", success});
 }

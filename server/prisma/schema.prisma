@@ -57,7 +57,7 @@ model Product {
   id            String @id @default(cuid())
   product       String
   description   String
-  value         String
+  amount         String
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
@@ -68,7 +68,7 @@ model Product {
 model Maintenance {
   id            String @id @default(cuid())
   repair        String
-  value         String
+  amount         String
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 

@@ -15,7 +15,7 @@ export const putUpdateProductService = async (id: string, data: findProduct) => 
     select: {
       product: true,
       description: true,
-      value: true,
+      amount: true,
     }
   });
 

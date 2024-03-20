@@ -15,7 +15,7 @@ export const findProductsByNameService = async (productName: string): Promise<fi
     id: true,
     product: true,
     description: true,
-    value: true,
+    amount: true,
   },
 });
 

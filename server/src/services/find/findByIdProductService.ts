@@ -11,7 +11,7 @@ export const findByIdProductService = async (id: string): Promise<findProduct | 
       id: true,
       product: true,
       description: true,
-      value: true,
+      amount: true,
     }
   });
 

@@ -10,7 +10,7 @@ export const findByIdMaintenanceService = async (id: string): Promise<findMainte
     select: {
       id: true,
       repair: true,
-      value: true,
+      amount: true,
     }
   });
 

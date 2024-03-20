@@ -5,7 +5,7 @@ interface Product {
   id: string;
   product: string;
   description: string;
-  value: string;
+  amount: string;
 }
 export default function SearchProduct() {
   const [formData, setFormData] = useState('');
@@ -172,8 +172,8 @@ export default function SearchProduct() {
                       />
                       <input
                         type="text"
-                        name="value"
-                        value={product.value}
+                        name="amount"
+                        value={product.amount}
                         onChange={handleEditInputChange}
                         className='bg-gray-50 border border-gray-500 
                       text-gray-900 text-sm rounded-lg focus:ring-1 focus:outline-none 
@@ -190,7 +190,7 @@ export default function SearchProduct() {
                     <div className='grid grid-cols-1 mb-2'>
                       <p className='flex text-lg font-semibold justify-center mb-2'>{product.product}</p>
                       <p className='text-lg font-semibold text-gray-500'>{product.description}</p>
-                      <p className='flex text-lg text-red-400 font-semibold justify-end m-6'> R$  {product.value}</p>
+                      <p className='flex text-lg text-red-400 font-semibold justify-end m-6'> R$  {product.amount}</p>
                     </div>
                   )}
                   <div className='absolute bottom-2 right-2 flex justify-end space-x-2'>

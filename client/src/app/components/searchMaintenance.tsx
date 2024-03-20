@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 interface Maintenance {
   id: string;
   repair: string;
-  value: string;
+  amount: string;
 }
 export default function SearchMaintenance() {
   const [formData, setFormData] = useState('');
@@ -161,8 +161,8 @@ export default function SearchMaintenance() {
                       />
                       <input
                         type="text"
-                        name="value"
-                        value={maintenance.value}
+                        name="amount"
+                        value={maintenance.amount}
                         onChange={handleEditInputChange}
                         className='bg-gray-50 border border-gray-500 
                       text-gray-900 text-sm rounded-lg focus:ring-1 focus:outline-none 
@@ -170,7 +170,9 @@ export default function SearchMaintenance() {
                       />
                       <button
                         onClick={() => handleSaveEdit()}
-                        className=" max-w-10 bg-gray-300 hover:bg-blue-400 hover:text-white text-gray-800 font-bold py-1 px-2 focus:transition-bg duration-600 rounded inline-flex items-center"
+                        className=" max-w-10 bg-gray-300 hover:bg-blue-400 
+                        hover:text-white text-gray-800 font-bold py-1 px-2 
+                        focus:transition-bg duration-600 rounded inline-flex items-center"
                       >
                         <Save />
                       </button>
@@ -178,18 +180,22 @@ export default function SearchMaintenance() {
                   ) : (
                     <div className='grid grid-cols-1 mb-2'>
                       <p className='flex text-lg font-semibold justify-center mb-2'>{maintenance.repair}</p>
-                      <p className='flex text-lg text-red-400 font-semibold justify-end m-6'> R$  {maintenance.value}</p>
+                      <p className='flex text-lg text-red-400 font-semibold justify-end m-6'> R$  {maintenance.amount}</p>
                     </div>
                   )}
                   <div className='absolute bottom-2 right-2 flex justify-end space-x-2'>
                     <button
-                      className="bg-gray-300 hover:bg-red-400 hover:text-white text-gray-800 font-bold py-1 px-2 focus:transition-bg duration-600 rounded inline-flex items-center"
+                      className="bg-gray-300 hover:bg-red-400 hover:text-white 
+                      text-gray-800 font-bold py-1 px-2 focus:transition-bg duration-600 
+                      rounded inline-flex items-center"
                       onClick={() => handleDeleteMaintenance(maintenance.id)}
                     >
                       <Trash2 />
                     </button>
                     <button
-                      className="bg-gray-300 hover:bg-green-400 hover:text-white text-gray-800 font-bold py-1 px-2 focus:transition-bg duration-600 rounded inline-flex items-center"
+                      className="bg-gray-300 hover:bg-green-400 hover:text-white 
+                      text-gray-800 font-bold py-1 px-2 focus:transition-bg duration-600 
+                      rounded inline-flex items-center"
                       onClick={() => handleEditMaintenance(maintenance.id)}
                     >
                       <Edit />

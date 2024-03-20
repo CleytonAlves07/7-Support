@@ -10,7 +10,7 @@ export const findAllMaintenanceService = async (): Promise<findMaintenance[]> =>
     select: {
       id: true,
       repair: true,
-      value: true,
+      amount: true,
     }
   });
   if (!products) throw new HttpException(httpStatus.BAD_REQUEST, 'Lista de serviços não encontrada!');

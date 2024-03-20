@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 export default function MaintenanceForm() {
   const [formData, setFormData] = useState({
     repair: '',
-    value: '',
+    amount: '',
   });
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -19,7 +19,7 @@ export default function MaintenanceForm() {
   function resetForm() {
     setFormData({
     repair: '',
-    value: '',
+    amount: '',
   });
   }
   const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
@@ -73,9 +73,9 @@ export default function MaintenanceForm() {
               </label>
               <input 
               type="text" 
-              name="value" 
-              id="value"
-              value={formData.value || ''}
+              name="amount" 
+              id="amount"
+              value={formData.amount || ''}
               onChange={handleChange} 
               className="bg-gray-50 border border-gray-500 text-gray-900 
               text-sm rounded-lg focus:ring-1 focus:outline-none focus:ring-blue-500 

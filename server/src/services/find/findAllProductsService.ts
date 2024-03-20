@@ -11,7 +11,7 @@ export const findAllProductsService = async (): Promise<findProduct[]> => {
       id: true,
       product: true,
       description: true,
-      value: true,
+      amount: true,
     }
   });
   if (!products) throw new HttpException(httpStatus.BAD_REQUEST, 'Lista de produtos não encontrada!');

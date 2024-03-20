@@ -14,7 +14,7 @@ export const findMaintenanceByNameService = async (maintenanceName: string): Pro
   select: {
     id: true,
     repair: true,
-    value: true,
+    amount: true,
   },
 });
 

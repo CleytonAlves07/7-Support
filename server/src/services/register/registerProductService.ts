@@ -4,7 +4,7 @@ import HttpException from '../../middleware/errors/HttpException';
 import { createProduct } from '../interface/IProduct';
 
 
-export const registerProductService = async ({ product, description, value }: createProduct ) => {
+export const registerProductService = async ({ product, description, amount }: createProduct ) => {
   // await Promise.all([
      
   // ]);
@@ -13,7 +13,7 @@ export const registerProductService = async ({ product, description, value }: cr
     await prisma.product.create({
       data: {
         product,
-        value,
+        amount,
         description,
       }
     })

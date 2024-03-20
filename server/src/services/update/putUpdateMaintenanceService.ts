@@ -14,7 +14,7 @@ export const putUpdateMaintenanceService = async (id: string, data: findMaintena
     data,
     select: {
       repair: true,
-      value: true,
+      amount: true,
     }
   });
 
