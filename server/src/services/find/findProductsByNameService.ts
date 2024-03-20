@@ -4,7 +4,6 @@ import HttpException from '../../middleware/errors/HttpException';
 import { findProduct } from '../interface/IProduct';
 
 export const findProductsByNameService = async (productName: string): Promise<findProduct | findProduct[]> => {
-  console.log('Service:', productName);
   
   const products = await prisma.product.findMany({
   where: {
@@ -21,7 +20,7 @@ export const findProductsByNameService = async (productName: string): Promise<fi
 });
 
   if (!products || products.length === 0) {
-    throw new HttpException(httpStatus.NOT_FOUND, `Nenhum produto com o nome ${productName} encontrado`);
+    throw new HttpException(httpStatus.NOT_FOUND, `Nenhum produto com o nome " ${productName} " foi encontrado!`);
   }
 
   return products;
