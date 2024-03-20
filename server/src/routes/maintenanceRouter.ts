@@ -6,6 +6,7 @@ import { findByIdMaintenanceController } from '../controllers/find/findByIdMaint
 import { putUpdateMaintenanceController } from '../controllers/update/putUpdateMaintenanceController';
 import { patchUpdateMaintenanceController } from '../controllers/update/patchUpdateMaintenanceController';
 import { deleteMaintenanceController } from '../controllers/delete/deleteMaintenanceController';
+import { findMaintenanceByNameController } from '../controllers/find/findMaintenanceByNameController';
 
 
 const maintenanceRouter = Router()
@@ -14,12 +15,14 @@ maintenanceRouter.post('/admin/register/maintenance', expressAsyncWrap(registerM
 
 maintenanceRouter.get('/maintenances', expressAsyncWrap(findAllMaintenanceController));
 
+maintenanceRouter.get('/admin/search/maintenance', expressAsyncWrap(findMaintenanceByNameController));
+
 maintenanceRouter.get('/maintenance/:id', expressAsyncWrap(findByIdMaintenanceController));
 
-maintenanceRouter.put('/maintenance/:id', expressAsyncWrap(putUpdateMaintenanceController));
+maintenanceRouter.put('/admin/maintenance/update/:id', expressAsyncWrap(putUpdateMaintenanceController));
 
 maintenanceRouter.patch('/maintenance/:id', expressAsyncWrap(patchUpdateMaintenanceController));
 
-maintenanceRouter.delete('/maintenance/:id', expressAsyncWrap(deleteMaintenanceController));
+maintenanceRouter.delete('/admin/maintenance/delete/:id', expressAsyncWrap(deleteMaintenanceController));
 
 export { maintenanceRouter }
