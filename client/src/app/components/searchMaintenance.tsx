@@ -48,7 +48,8 @@ export default function SearchMaintenance() {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${BACKEND_URL}/admin/search/maintenance?query=${formData}`, {
+      const pascalCase = formData.slice(0, 1).toUpperCase() + formData.slice(1);
+      const res = await fetch(`${BACKEND_URL}/admin/search/maintenance?query=${pascalCase}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -59,7 +60,11 @@ export default function SearchMaintenance() {
 
       if (res.ok) {
         setMessage(data.message);
-        setSearchedMaintenance(data);
+        
+        setSearchedMaintenance(data.map((maintenance: Maintenance) => ({
+          ...maintenance,
+          repair: maintenance.repair.slice(0,1).toUpperCase() + maintenance.repair.slice(1),
+        })));
         setIsSuccess(data.success);
 
       } else {
@@ -101,7 +106,7 @@ export default function SearchMaintenance() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(maintenanceToEdit), // Envie apenas o objeto de manutenção editado
+        body: JSON.stringify(maintenanceToEdit),
       });
 
       const data = await res.json();
@@ -146,7 +151,7 @@ export default function SearchMaintenance() {
           {searchedMaintenance && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
               {searchedMaintenance.map((maintenance: any) => (
-                <div key={maintenance.maintenance}
+                <div key={maintenance.id}
                   className="p-4 mt-8 bg-gray-100 hover:bg-slate-200 rounded-md shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] relative">
                   {editMaintenanceId === maintenance.id ? (
                     <div className='grid grid-cols-1 mb-2'>

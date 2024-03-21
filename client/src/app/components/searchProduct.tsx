@@ -49,7 +49,8 @@ export default function SearchProduct() {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${BACKEND_URL}/admin/search/product?query=${formData}`, {
+      const pascalCase = formData.slice(0, 1).toUpperCase() + formData.slice(1);
+      const res = await fetch(`${BACKEND_URL}/admin/search/product?query=${pascalCase}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -60,7 +61,10 @@ export default function SearchProduct() {
 
       if (res.ok) {
         setMessage(data.message);
-        setSearchedProduct(data);
+        setSearchedProduct(data.map((product: Product) => ({
+          ...product,
+          product: product.product.slice(0,1).toUpperCase() + product.product.slice(1),
+        })));
         setIsSuccess(data.success);
 
       } else {
