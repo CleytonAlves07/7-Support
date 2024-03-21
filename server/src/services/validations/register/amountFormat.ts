@@ -1,5 +1,5 @@
 import httpStatus from 'http-status';
-import HttpException from '../../../../middleware/errors/HttpException';
+import HttpException from '../../../middleware/errors/HttpException';
 
 
 export const amountFormat = async (  amount: string ): Promise<void> => {

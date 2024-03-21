@@ -5,7 +5,8 @@ import { createMaintenance } from '../interface/IMaintenance';
 import { repairEmpty } from '../validations/register/maintenance/repairEmpty';
 import { repairMaxCharacters } from '../validations/register/maintenance/repairMaxCharacters';
 import { pascalRegisterRepair } from '../validations/register/maintenance/pascalRegisterRepair';
-import { amountFormat } from '../validations/register/maintenance/amountFormat';
+import { amountFormat } from '../validations/register/amountFormat';
+import { repairMinCharacters } from '../validations/register/maintenance/repairMinCharacters';
 
 
 export const registerMaintenanceService = async ({ repair, amount }: createMaintenance ) => {
@@ -13,6 +14,7 @@ export const registerMaintenanceService = async ({ repair, amount }: createMaint
     repairEmpty(repair),
     repairMaxCharacters(repair),
     pascalRegisterRepair(repair),
+    repairMinCharacters(repair),
     amountFormat(amount),
   ]);
 
