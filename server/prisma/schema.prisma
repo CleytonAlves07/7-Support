@@ -60,6 +60,7 @@ model Product {
   amount         String
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+  orders        ServiceOrder[] @relation("ServiceOrderProduct")
 
   @@map("products")
 
@@ -71,9 +72,24 @@ model Maintenance {
   amount         String
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+  orders        ServiceOrder[] @relation("ServiceOrderService")
 
   @@map("maintenances")
 
+}
+
+model ServiceOrder {
+  id              String        @id @default(cuid())
+  customerId      String        @map("customer_id")
+  mechanicId      String        @map("mechanic_id")
+  products        Product[]     @relation("ServiceOrderProduct")
+  services        Maintenance[] @relation("ServiceOrderService")
+  defect          String
+  totalAmount     Float         @default(0)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@map("service_orders")
 }
 
 
