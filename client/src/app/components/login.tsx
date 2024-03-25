@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation';
+import { generateAccessToken } from '../../../../server/src/services/validations/jwt';
 
 export default function Login() {
   const [formData, setFormData] = useState({});
@@ -32,6 +33,14 @@ export default function Login() {
       setMessage(data.message);
       setLoading(false);
       if (data.success) {
+        // const accessToken = generateAccessToken({
+        //   id: data.user.id,
+        //   email: formData.email,
+        //   role: data.role,
+        // });
+
+        // localStorage.setItem('accessToken', accessToken);
+
         switch (data.user.role) {
           case 'manager':
             router.push('/admin/orders')

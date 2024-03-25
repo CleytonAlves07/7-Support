@@ -31,11 +31,12 @@ export const signUpService = async ({ email, password, name, cpf }: UserSignUp) 
   ]);
   try {
     const role = determineUserRole(email);
-    if (role === 'customer') { await customerSignUp( email, password, name, cpf, role )}
-    if (role === 'manager') { await managerSignUp(email, password, name, cpf, role)}
-    if (role === 'mechanic') { await mechanicSignUp(email, password, name, cpf, role)}
+    let userJwt;
+    if (role === 'customer') { userJwt = await customerSignUp( email, password, name, cpf, role )}
+    if (role === 'manager') { userJwt = await managerSignUp(email, password, name, cpf, role)}
+    if (role === 'mechanic') { userJwt = await mechanicSignUp(email, password, name, cpf, role)}
     
-  return { success: true }
+    return { success: true , user: userJwt };
   } catch (error) {
     console.error('Erro ao criar o usuário:', error)
     throw error;

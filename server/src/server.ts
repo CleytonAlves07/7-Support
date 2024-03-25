@@ -19,7 +19,7 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 
-configDotenv()
+configDotenv();
 
 app.use('/', authenticationRouter)
 app.use('/', customerRouter)

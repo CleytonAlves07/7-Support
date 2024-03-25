@@ -1,4 +1,6 @@
+import httpStatus from 'http-status';
 import { prisma } from '../../db/prismaClient';
+import HttpException from '../../middleware/errors/HttpException';
 import { cpfValidate } from '../validations/cpf/cpfValidate';
 import { existingCPFCustomer } from '../validations/cpf/existingCPFCustomer';
 import { existingCPFManager } from '../validations/cpf/existingCPFManager';
@@ -20,14 +22,22 @@ export const customerSignUp = async ( email:string, password:string, name:string
       existingCPFManager(cpf),
       existingCPFMechanic(cpf),
   ]);
-  await prisma.customer.create({
+  try {
+    const user = await prisma.customer.create({
       data: {
-        name, 
+        name,
         email,
         password: hashedPassword,
         cpf,
         role,
       }
-    })
+    });
+    
+    return { id: user.id, email: user.email, role: user.role };
+
+  } catch (error) {    
+    console.log(error);
+    throw new HttpException(httpStatus.BAD_REQUEST, 'Usuário não cadastrado')
+  }
 }
       

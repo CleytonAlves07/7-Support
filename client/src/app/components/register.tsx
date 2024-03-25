@@ -1,7 +1,8 @@
 "use client"
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { generateAccessToken } from '../../../../server/src/services/validations/jwt';
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -40,7 +41,17 @@ export default function Register() {
       setMessage(data.message);
       setLoading(false);
       if (data.success) {
-        router.push('/login')
+        const { id, email, role } = data.user;
+        
+        console.log(id, email, role);
+        
+        const accessToken = generateAccessToken({ id, email, role });
+
+        localStorage.setItem('accessToken', accessToken);
+
+        router.push('/login');
+      } else {
+          console.error('Data inválido: ', data);
       }
       
     } catch (error) {

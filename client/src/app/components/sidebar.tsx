@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ChevronsDown, PencilLine, Barcode, Settings, Package, SlidersHorizontal, Menu, Search } from 'lucide-react';
+import { ChevronsDown, PencilLine, Barcode, Settings, Package, SlidersHorizontal, Menu, Search, ListOrdered } from 'lucide-react';
 
 export default function Sidebar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,7 +32,12 @@ export default function Sidebar() {
           
         </button>
       </div>
-
+      <div className="flex items-center justify-between w-full px-6 py-2 text-gray-200 hover:text-gray-400 focus:outline-none transition-bg duration-300 hover:bg-white">
+            <Link href="/stock" className='flex space-x-4'>
+              <ListOrdered className="w-6 h-6" />
+              <span>Adicionar Ordem de Serviço</span>
+            </Link>
+          </div>
       <div className={`transition-opacity mb-2 w-full ${isMenuOpen ? 'opacity-100 transition-bg duration-500' : 'opacity-0 transition-bg duration-500'}`}>
         <button
           className="flex items-center justify-between w-full px-6 py-2 text-gray-200 hover:text-gray-400 focus:outline-none hover:bg-white transition-bg duration-500"
@@ -105,7 +110,7 @@ export default function Sidebar() {
           <div className="flex items-center justify-between w-full px-6 py-2 text-gray-200 hover:text-gray-400 focus:outline-none transition-bg duration-300 hover:bg-white">
             <Link href="/orders" className='flex space-x-4'>
               <SlidersHorizontal className="w-6 h-6"/>
-              <span>Em andamento</span>
+              <span>OS Em andamento</span>
             </Link>
           </div>
           <div className="flex items-center justify-between w-full px-6 py-2 text-gray-200 hover:text-gray-400 focus:outline-none transition-bg duration-300 hover:bg-white">

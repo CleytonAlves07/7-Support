@@ -23,15 +23,18 @@ export const mechanicSignUp = async ( email:string, password:string, name:string
       existingCPFMechanic(cpf),
   ]);
   try {
-    await prisma.mechanic.create({
+    const user = await prisma.mechanic.create({
       data: {
-        name, 
+        name,
         email,
         password: hashedPassword,
         cpf,
         role,
       }
-    })
+    });
+   
+    return { id: user.id, email: user.email, role: user.role };
+    
   } catch (error) {
     console.log(error);
     throw new HttpException(httpStatus.BAD_REQUEST, 'Usuário não cadastrado')
