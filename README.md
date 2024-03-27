@@ -1,4 +1,4 @@
-# 7-Support: Transformando a Gestão de Ordens de Serviço Automotivas
+# 7-Support: Transformando a Gestão de Ordens de Serviço Automotivas - Projeto em Andamento
 
 [Tela inicial.webm](https://github.com/CleytonAlves07/7-Support/assets/89083420/50a9bffb-4cf7-43f1-be94-ee60cecd0e53)
 
@@ -74,6 +74,10 @@ O projeto está aberto a contribuições. Sinta-se à vontade para abrir issues,
 5. Inicie o back-end: `cd server && npm run dev`
 6. Inicie o front-end: `cd client && npm run dev`
 
-## Agradecimento:
-
-Agradecemos por contribuir para tornar o 7-Support uma ferramenta ainda mais poderosa e eficiente para a gestão de Ordens de Serviço em oficinas mecânicas.
+## Passo em andamento
+1. Ordem de Serviço utilizando produtos e serviços já cadastrados.
+2. OS em andamento
+3. Stock de produtos
+4. Área do cliente
+5. Área do mecânico
+6. Página de análise e desempenho dos mecânicos
