@@ -1,10 +1,39 @@
-# 7-Support: Transformando a Gestão de Ordens de Serviço Automotivas
+# 7-Support: Transformando a Gestão de Ordens de Serviço Automotivas - Projeto em Andamento
 
-[Gravação de tela de 05-02-2024 12:16:19.webm](https://github.com/CleytonAlves07/7-Support/assets/89083420/019d48cf-b4c0-4b6e-8f28-a290b8560451)
+[Tela inicial.webm](https://github.com/CleytonAlves07/7-Support/assets/89083420/50a9bffb-4cf7-43f1-be94-ee60cecd0e53)
+
 
 Bem-vindo ao 7-Support, sua solução completa para o eficiente gerenciamento de Ordens de Serviço em oficinas mecânicas. Desenvolvido para atender tanto clientes quanto administradores, nossa plataforma oferece uma experiência otimizada no processo de manutenção automotiva.
 
 ## Recursos Principais:
+
+## Tela inicial - mobile first
+
+[Tela_inicial.webm](https://github.com/CleytonAlves07/7-Support/assets/89083420/7cae621b-c6e2-4a26-8cd5-cd1b15ba2e3e)
+
+
+
+
+## Registro e Login com várias validações feitas pelo desenvolvedor
+
+[Tela_registro.webm](https://github.com/CleytonAlves07/7-Support/assets/89083420/8ba2aee8-8466-40e6-8603-23ef0479f0fd)
+
+
+[tela_login.webm](https://github.com/CleytonAlves07/7-Support/assets/89083420/4974cca2-8e1c-45cd-b588-40bedecf6b24)
+
+## Menu com opções de cadastro de produto, serviços e pesquisas
+[menu_administrador.webm](https://github.com/CleytonAlves07/7-Support/assets/89083420/7e08172c-eae8-4cc1-9f00-77e043f7b7b2)
+
+## Cadastro de serviços e produtos feito apenas pelo administrador com validações
+
+[cadastro_servico.webm](https://github.com/CleytonAlves07/7-Support/assets/89083420/0240208e-bdf7-44ba-9c29-e649cebfed81)
+
+## Pesquisa por serviços e produtos com edição (case insensitive)
+
+[Pesquisa_com_edicao.webm](https://github.com/CleytonAlves07/7-Support/assets/89083420/d61b1ee1-fb1b-48b3-93e1-976a9ef96513)
+
+
+
 
 ### Portal do Cliente:
 - Visualize detalhes cruciais sobre suas Ordens de Serviço.
@@ -45,6 +74,10 @@ O projeto está aberto a contribuições. Sinta-se à vontade para abrir issues,
 5. Inicie o back-end: `cd server && npm run dev`
 6. Inicie o front-end: `cd client && npm run dev`
 
-## Agradecimento:
-
-Agradecemos por contribuir para tornar o 7-Support uma ferramenta ainda mais poderosa e eficiente para a gestão de Ordens de Serviço em oficinas mecânicas.
+## Passos em andamento
+1. Ordem de Serviço utilizando produtos e serviços já cadastrados.
+2. OS em andamento
+3. Stock de produtos
+4. Área do cliente
+5. Área do mecânico
+6. Página de análise e desempenho dos mecânicos
