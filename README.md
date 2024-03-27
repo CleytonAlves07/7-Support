@@ -74,7 +74,7 @@ O projeto está aberto a contribuições. Sinta-se à vontade para abrir issues,
 5. Inicie o back-end: `cd server && npm run dev`
 6. Inicie o front-end: `cd client && npm run dev`
 
-## Passo em andamento
+## Passos em andamento
 1. Ordem de Serviço utilizando produtos e serviços já cadastrados.
 2. OS em andamento
 3. Stock de produtos
