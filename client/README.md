@@ -1,6 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
+## Iniciar o projeto
 
 First, run the development server:
 
@@ -14,23 +12,36 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) no seu browser para ver o projeto.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Tela inicial - mobile first
 
-## Learn More
+[Tela_inicial.webm](https://github.com/CleytonAlves07/7-Support/assets/89083420/7cae621b-c6e2-4a26-8cd5-cd1b15ba2e3e)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Registro e Login com várias validações feitas pelo desenvolvedor
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[Tela_registro.webm](https://github.com/CleytonAlves07/7-Support/assets/89083420/8ba2aee8-8466-40e6-8603-23ef0479f0fd)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+[tela_login.webm](https://github.com/CleytonAlves07/7-Support/assets/89083420/4974cca2-8e1c-45cd-b588-40bedecf6b24)
+
+## Menu com opções de cadastro de produto, serviços e pesquisas
+[menu_administrador.webm](https://github.com/CleytonAlves07/7-Support/assets/89083420/7e08172c-eae8-4cc1-9f00-77e043f7b7b2)
+
+## Cadastro de serviços e produtos feito apenas pelo administrador com validações
+
+[cadastro_servico.webm](https://github.com/CleytonAlves07/7-Support/assets/89083420/0240208e-bdf7-44ba-9c29-e649cebfed81)
+
+## Pesquisa por serviços e produtos com edição (case insensitive)
+
+[Pesquisa_com_edicao.webm](https://github.com/CleytonAlves07/7-Support/assets/89083420/d61b1ee1-fb1b-48b3-93e1-976a9ef96513)
+
+
+
+
+
+
