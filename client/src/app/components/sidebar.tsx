@@ -21,7 +21,7 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className={`flex flex-col items-center justify-start w-16 h-screen bg-light-blue text-white overflow-hidden transition-all ${isMenuOpen ? 'w-64 transition-bg duration-500' : 'w-16 transition-bg duration-500'}`}>
+    <aside className={`flex flex-col items-center justify-start w-16 h-screen rounded-sm bg-light-blue text-white overflow-hidden transition-all ${isMenuOpen ? 'w-64 transition-bg duration-500' : 'w-16 transition-bg duration-500'}`}>
       <div className="flex items-center mb-4">
         <button
           className="flex text-white hover:text-gray-100 focus:outline-none items-end"
@@ -33,8 +33,8 @@ export default function Sidebar() {
         </button>
       </div>
       
-      <div className={`transition-opacity mb-2 w-full ${isMenuOpen ? 'opacity-100 transition-bg duration-500' : 'opacity-0 transition-bg duration-500'}`}>
-        <div className="flex items-center justify-between w-full px-6 py-2 text-gray-200 hover:text-gray-400 focus:outline-none transition-bg duration-300 hover:bg-white">
+      <div className={`transition-opacity mb-2 w-full  ${isMenuOpen ? 'opacity-100 transition-bg duration-500' : 'opacity-0 transition-bg duration-500'}`}>
+        <div className="flex items-center justify-between w-full  px-6 py-2 text-gray-200 hover:text-gray-400 focus:outline-none transition-bg duration-300 hover:bg-white">
             <Link href="/admin/orders" className='flex space-x-4'>
               <ListOrdered className="w-6 h-6" />
               <span>Ordem de Serviço</span>

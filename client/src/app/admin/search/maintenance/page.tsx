@@ -9,8 +9,6 @@ export default function AdminSearchMaintenance() {
   }
   return (
     <>
-     <>
-     <>
       <div className="flex">
         <Sidebar />
       <main className="flex-grow p-4">  
@@ -18,7 +16,6 @@ export default function AdminSearchMaintenance() {
       </main>
     </div>
     </>
-    </>
-    </>
+   
   )
 }
