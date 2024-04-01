@@ -1,6 +1,10 @@
 
 "use client"
+import { Loader2 } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
+import checkAccessToken from './checkAccessToken';
+import { useRouter } from 'next/navigation';
+
 
 export default function ProductForm() {
   const [formData, setFormData] = useState({
@@ -11,6 +15,7 @@ export default function ProductForm() {
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const router = useRouter();
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setFormData({
@@ -57,6 +62,29 @@ export default function ProductForm() {
 
     return () => clearTimeout(timeoutId);
   }, [message]);
+
+  useEffect(() => {
+    async function checkValidationToken() {
+      const isValid = await checkAccessToken();
+      if (!isValid) {
+        router.push('/login');
+      }
+      setLoading(false);
+    }
+
+    checkValidationToken();
+  });
+
+  if (loading === false) {
+    return (
+      <div className='flex w-screen h-screen text-center items-center justify-center '>
+        <div>
+          <Loader2
+          className='flex w-28 h-28 animate-spin text-blue-400'/>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <form onSubmit={handleSubmit} className="max-w-md mx-auto">

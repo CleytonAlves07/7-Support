@@ -1,6 +1,8 @@
 "use client"
-import { Search } from 'lucide-react';
-import React, { useState } from 'react';
+import { Loader2, Search } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import checkAccessToken from './checkAccessToken';
 
 export default function ServiceOrderForm() {
   const [formData, setFormData] = useState({
@@ -13,6 +15,7 @@ export default function ServiceOrderForm() {
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const router = useRouter();
   const [productSearchResults, setProductSearchResults] = useState([]);
   const [formProduct, setFormProduct] = useState({
     product: "",
@@ -91,6 +94,28 @@ export default function ServiceOrderForm() {
       setLoading(false);
       console.error(error);
     }
+  }
+  useEffect(() => {
+    async function checkValidationToken() {
+      const isValid = await checkAccessToken();
+      if (!isValid) {
+        router.push('/login');
+      }
+      setLoading(false);
+    }
+
+    checkValidationToken();
+  });
+
+  if (loading === false) {
+    return (
+      <div className='flex w-screen h-screen text-center items-center justify-center '>
+        <div>
+          <Loader2
+          className='flex w-28 h-28 animate-spin text-blue-400'/>
+        </div>
+      </div>
+    )
   }
 
   return (

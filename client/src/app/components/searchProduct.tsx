@@ -1,5 +1,7 @@
-import { Edit, Save, Search, Trash2 } from 'lucide-react';
+import { Edit, Loader2, Save, Search, Trash2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import checkAccessToken from './checkAccessToken';
 
 interface Product {
   id: string;
@@ -13,6 +15,8 @@ export default function SearchProduct() {
   const [isSuccess, setIsSuccess] = useState<null | boolean>(null);
   const [searchedProduct, setSearchedProduct] = useState<Product[]>([]);
   const [editProductId, setEditProductId] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setFormData(e.target.value);
@@ -85,6 +89,29 @@ export default function SearchProduct() {
 
     return () => clearTimeout(timeoutId);
   }, [message]);
+
+  useEffect(() => {
+    async function checkValidationToken() {
+      const isValid = await checkAccessToken();
+      if (!isValid) {
+        router.push('/login');
+      }
+      setLoading(false);
+    }
+
+    checkValidationToken();
+  });
+
+  if (loading === false) {
+    return (
+      <div className='flex w-screen h-screen text-center items-center justify-center '>
+        <div>
+          <Loader2
+          className='flex w-28 h-28 animate-spin text-blue-400'/>
+        </div>
+      </div>
+    )
+  }
 
   const handleEditInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   const { name, value } = e.target;

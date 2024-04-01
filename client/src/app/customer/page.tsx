@@ -2,6 +2,6 @@
 
 export default function AdminOrders() {
   return (
-    <>Hello Admin!</>
+    <>Olá, usuário! Em breve terá uma linda página para você aqui!</>
   )
 }
