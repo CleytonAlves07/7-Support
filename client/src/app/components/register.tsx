@@ -43,8 +43,6 @@ export default function Register() {
       if (data.success) {
         const { id, email, role } = data.user;
         
-        console.log(id, email, role);
-        
         const accessToken = generateAccessToken({ id, email, role });
 
         localStorage.setItem('accessToken', accessToken);

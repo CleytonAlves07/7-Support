@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation';
-import { generateAccessToken } from '../../../../server/src/services/validations/jwt';
+import { generateAccessToken, verifyAccessToken } from '../../../../server/src/services/validations/jwt';
 
 export default function Login() {
   const [formData, setFormData] = useState({});
@@ -13,8 +13,7 @@ export default function Login() {
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setFormData({
       ...formData, [e.target.id]: e.target.value
-    })
-    
+    });
   }
   const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
   async function handleSubmit(e: React.SyntheticEvent) {
@@ -33,27 +32,14 @@ export default function Login() {
       setMessage(data.message);
       setLoading(false);
       if (data.success) {
-        // const accessToken = generateAccessToken({
-        //   id: data.user.id,
-        //   email: formData.email,
-        //   role: data.role,
-        // });
+        const accessToken = generateAccessToken({
+          id: data.user.id,
+          email: data.user.email,
+          role: data.user.role,
+        });
+        
+        localStorage.setItem('accessToken', accessToken);
 
-        // localStorage.setItem('accessToken', accessToken);
-
-        switch (data.user.role) {
-          case 'manager':
-            router.push('/admin/orders')
-            break;
-          case 'mechanic':
-            router.push('/mechanic/orders')
-            break;
-          case 'customer':
-            router.push('/customer')
-            break;
-          default:
-            router.push('/')
-      } 
       }
     } catch (error) {
       setLoading(false);
@@ -67,6 +53,32 @@ export default function Login() {
 
     return () => clearTimeout(timeoutId);
   }, [message]);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      try {
+        const verifiedToken = verifyAccessToken(accessToken);
+        switch (verifiedToken.role) {
+          case 'manager':
+            router.push('/admin/orders');
+            break;
+          case 'mechanic':
+            router.push('/mechanic/orders');
+            break;
+          case 'customer':
+            router.push('/customer');
+            break;
+          default:
+            router.push('/');
+        }
+
+      } catch (error) {
+        console.error('Error: ', error);
+      }
+    }
+  });
+
   return (
     <div className='w-1/2 min-w-80'>
       <h1 className="flex text-2xl font-semibold mb-4 text-center justify-center">Login</h1>
